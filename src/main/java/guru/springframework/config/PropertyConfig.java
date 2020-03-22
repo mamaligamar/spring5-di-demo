@@ -27,6 +27,12 @@ public class PropertyConfig {
     String password;
     @Value("${guru.dburl}")
     String url;
+    @Value("${guru.jms.username}")
+    String userJms;
+    @Value("${guru.jms.password")
+    String passwordJms;
+    @Value("${guru.jms.url}")
+    String urlJms;
 
     @Bean
     public FakeDataSource fakeDataSource(){
@@ -40,9 +46,9 @@ public class PropertyConfig {
     @Bean
     public FakeJmsBroker fakeJmsBroker(){
         FakeJmsBroker fakeJmsBroker = new FakeJmsBroker();
-        fakeJmsBroker.setUser(user);
-        fakeJmsBroker.setPassword(password);
-        fakeJmsBroker.setUrl(url);
+        fakeJmsBroker.setUser(userJms);
+        fakeJmsBroker.setPassword(passwordJms);
+        fakeJmsBroker.setUrl(urlJms);
         return fakeJmsBroker;
     }
 
