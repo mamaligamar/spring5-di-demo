@@ -1,0 +1,18 @@
+#spring will look for files that have the name application and it's a yml
+#we can maintain this file and also the application.properties it's perfectly, spring will load properties from both of them
+#refer to spring documentation in order to see the order in which the properties are treated https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config
+guru:
+  jms:
+    username: JMS username
+    password: password
+    url: SomeUrl
+
+#File separator in yml
+---
+#The another alternative way to the application-de file would be to define here the profile as follows
+#The properties declared after the profiles tag have prefence, so the properties declared above are global and these another properties are for the de profile
+spring:
+  profiles: de
+guru:
+  jms:
+    username: JMS username $$$ German
