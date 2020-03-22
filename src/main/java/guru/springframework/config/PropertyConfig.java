@@ -13,13 +13,13 @@ import org.springframework.core.env.Environment;
 
 @Configuration
 //@PropertySource({"classpath:datasource.properties", "classpath:jms.properties"})
-@PropertySources({
+/*@PropertySources({
         @PropertySource("classpath:datasource.properties"),
         @PropertySource("classpath:jms.properties")
-})
+})*/
 public class PropertyConfig {
-    @Autowired
-    Environment env;
+    /*@Autowired
+    Environment env;*/
 
     @Value("${guru.username}")
     String user;
@@ -31,7 +31,7 @@ public class PropertyConfig {
     @Bean
     public FakeDataSource fakeDataSource(){
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUser(env.getProperty("USERNAME"));
+        fakeDataSource.setUser(user);
         fakeDataSource.setPassword(password);
         fakeDataSource.setUrl(url);
         return fakeDataSource;
@@ -40,15 +40,15 @@ public class PropertyConfig {
     @Bean
     public FakeJmsBroker fakeJmsBroker(){
         FakeJmsBroker fakeJmsBroker = new FakeJmsBroker();
-        fakeJmsBroker.setUser(env.getProperty("USERNAME"));
+        fakeJmsBroker.setUser(user);
         fakeJmsBroker.setPassword(password);
         fakeJmsBroker.setUrl(url);
         return fakeJmsBroker;
     }
 
-    @Bean //PropertySourcesPlaceholderConfigurer will read the file for us
+   /* @Bean //PropertySourcesPlaceholderConfigurer will read the file for us
     public static PropertySourcesPlaceholderConfigurer properties() {
         PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer = new PropertySourcesPlaceholderConfigurer();
         return propertySourcesPlaceholderConfigurer;
-    }
+    }*/
 }
